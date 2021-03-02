@@ -1,6 +1,5 @@
 import {act} from "react-dom/test-utils";
 import {render, screen} from "@testing-library/react";
-import userEvent from "@testing-library/user-event";
 import PlayingField, {GRID_LS_KEY} from "./field";
 
 describe('useEntries', () => {
