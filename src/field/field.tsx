@@ -6,7 +6,7 @@ export const GRID_LS_KEY = 'GRID_LS_KEY';
 type GridContent = 'empty' | 'wall';
 
 export default function PlayingField() {
-    const [entries, setEntries] = useState<GridContent[][]>(() => {
+    const [entries] = useState<GridContent[][]>(() => {
         let gridJson = localStorage.getItem(GRID_LS_KEY) || '';
 
         if (gridJson === '') {
