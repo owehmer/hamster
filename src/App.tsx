@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import './App.css';
 import PlayingField from "./field/field";
-import {GRID_LS_KEY, GridMap, GridSquare} from "./field.models";
+import {GRID_LS_KEY, GridMap} from "./field.models";
 
 function App() {
     const [gridMap] = useState<GridMap>(() => {
