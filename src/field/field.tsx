@@ -1,36 +1,24 @@
 import './field.css';
-import {useEffect, useState} from "react";
+import {Direction, GridMap} from "../field.models";
+import {useState} from "react";
+import Hamster from "./hamster";
+import {HamsterFunctions} from "./hamster.fns";
+import HamsterController from "./hamster-controller";
 
-export const GRID_LS_KEY = 'GRID_LS_KEY';
+interface PlayingFieldProps {
+    gridMap: GridMap
+}
 
-type GridContent = 'empty' | 'wall';
-
-export default function PlayingField() {
-    const [entries] = useState<GridContent[][]>(() => {
-        let gridJson = localStorage.getItem(GRID_LS_KEY) || '';
-
-        if (gridJson === '') {
-            const emptyLSState: GridContent[][] = new Array(3).fill(undefined)
-                .map(() => new Array(3).fill(undefined)
-                    .map(() => "empty"));
-
-            gridJson = JSON.stringify(emptyLSState);
-        }
-
-        const gridContents = JSON.parse(gridJson) as GridContent[][];
-
-        return gridContents;
-    });
-
-    useEffect(() => {
-        localStorage.setItem(GRID_LS_KEY, JSON.stringify(entries));
-    }, [entries]);
+export default function PlayingField({gridMap}: PlayingFieldProps) {
+    const [hamsterXPos, setHamsterXPos] = useState<number>(() => 0);
+    const [hamsterYPos, setHamsterYPos] = useState<number>(() => 0);
+    const [direction, setDirection] = useState<Direction>(() => "right");
 
     function getClassName(xIndex: number, yIndex: number): string {
         const baseClass = 'pf-row--col';
         const classes: string[] = [baseClass];
 
-        switch (entries[yIndex][xIndex]) {
+        switch (gridMap[yIndex][xIndex]) {
             case "empty":
                 classes.push(`${baseClass}__empty`);
                 break;
@@ -42,14 +30,42 @@ export default function PlayingField() {
         return classes.join(' ');
     }
 
+    function move() {
+        HamsterFunctions.move({
+            direction,
+            grid: gridMap,
+            setXPosition: setHamsterXPos,
+            setYPosition: setHamsterYPos,
+            xPosition: hamsterXPos,
+            yPosition: hamsterYPos
+        })
+    }
+
+    function turnRight() {
+        HamsterFunctions.turnRight({direction, setDirection});
+    }
+
+    const hamster = <Hamster
+        grid={gridMap}
+        direction={direction}
+    />;
+
     return (
-        <div className="playing-field" data-testid="playing-field">
-            {entries.map((row, yIndex) => row.map((col, xIndex) =>
-                <div className={getClassName(xIndex, yIndex)}
-                     key={`${yIndex}${xIndex}`}
-                     data-testid={'pf-row--col' + yIndex + xIndex}
-                />
-            ))}
-        </div>
+        <>
+            <div className="playing-field" data-testid="playing-field">
+                {gridMap.map((row, yIndex) => row.map((col, xIndex) =>
+                    <div className={getClassName(xIndex, yIndex)}
+                         key={`${yIndex}${xIndex}`}
+                         data-testid={'pf-row--col' + yIndex + xIndex}
+                    >
+                        {yIndex === hamsterYPos && xIndex === hamsterXPos ? hamster : null}
+                    </div>
+                ))}
+            </div>
+
+            <div className="hamster-controller">
+                <HamsterController moved={() => move()} turnedRight={() => turnRight()}/>
+            </div>
+        </>
     )
 }

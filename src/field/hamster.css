@@ -1,0 +1,23 @@
+.hamster {
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 0 20px 20px 20px;
+    border-color: transparent transparent #007bff transparent;
+}
+
+.hamster__up {
+    transform: rotate(0deg);
+}
+
+.hamster__right {
+    transform: rotate(90deg);
+}
+
+.hamster__down {
+    transform: rotate(180deg);
+}
+
+.hamster__left {
+    transform: rotate(270deg);
+}
