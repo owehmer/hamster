@@ -3,7 +3,7 @@ import {render, screen} from "@testing-library/react";
 import PlayingField from "./field";
 import {GRID_LS_KEY, GridMap} from "../field.models";
 
-describe('useEntries', () => {
+describe('PlayingField', () => {
     beforeEach(() => {
         localStorage.setItem(GRID_LS_KEY, '');
     });

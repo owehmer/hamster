@@ -33,6 +33,6 @@ export default function Hamster(props: HamsterProps) {
         return classes.join(' ');
     }
     return (
-        <div className={classNames()}/>
+        <div className={classNames()} data-testid="hamster"/>
     )
 }
