@@ -1,8 +1,9 @@
 import {act} from "react-dom/test-utils";
 import {render, screen} from "@testing-library/react";
-import PlayingField, {GRID_LS_KEY} from "./field";
+import PlayingField from "./field";
+import {GRID_LS_KEY, GridMap} from "../field.models";
 
-describe('useEntries', () => {
+describe('PlayingField', () => {
     beforeEach(() => {
         localStorage.setItem(GRID_LS_KEY, '');
     });
@@ -11,9 +12,13 @@ describe('useEntries', () => {
         localStorage.setItem(GRID_LS_KEY, '');
     })
 
-    it('should have all empty fields when initialized without localstorage', () => {
+    it('can render the input correctly', () => {
+        const map: GridMap = new Array(3).fill(undefined)
+            .map(() => new Array(3).fill(undefined)
+                .map(() => "empty"));
+
         act(() => {
-            render(<PlayingField/>);
+            render(<PlayingField gridMap={map}/>);
         });
 
         const wrapper = screen.getByTestId('playing-field');
