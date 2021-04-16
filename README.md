@@ -1,46 +1,25 @@
-# Getting Started with Create React App
+# Hamster simulator
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Background
 
-## Available Scripts
+The hamster simulator is based on a [game developed in Java](https://www.java-hamster-modell.de/simulator.html) with the
+same name. It has been developed by students of a German university for other people to learn the basics of Java. With
+only a few predefined functions (move, turnLeft, checkIfWallInFront, pickUp, if, for and while) you had to clear the
+playing field of all the seeds.
 
-In the project directory, you can run:
+![img.png](readme-hamster-poster.png)
 
-### `yarn start`
+Looking back, it did its job in getting me engaged into programming, but it was too easy.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+So this version is not intended as a learning instrument, but as way to challenge yourself and your friends.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## Goals
 
-### `yarn test`
+There are several things you can do, but the one thing they have is common is: Have fun and learn to love logic and
+Javascript (hopefully Typescript as well).
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Create the most difficult mazes and try to solve it yourself or let your friends solve them.
+2. Challenge other people to a duel on who can solve a maze the fastest and beat the best time
+3. Learn multiple ways to solve problems in a visual appealing way
 
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+### -> Still a work in progress
